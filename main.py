@@ -20,4 +20,4 @@ class Main:
 if __name__ == '__main__':
     main = Main()
     main.run()
-    #14:22
+    #24:10
