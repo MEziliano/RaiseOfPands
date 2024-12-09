@@ -15,7 +15,7 @@ screen_width = 1000
 screen_height = 1000
 
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('Platformer')
+pygame.display.set_caption('Raise Of Pands')
 
 
 #define font
@@ -27,7 +27,7 @@ font_score = pygame.font.SysFont('Bauhaus 93', 30)
 tile_size = 50
 game_over = 0
 main_menu = True
-level = 3
+level = 1
 max_levels = 7
 score = 0
 
@@ -38,7 +38,7 @@ blue = (0, 0, 255)
 
 
 #load images
-sun_img = pygame.image.load('.\img\sun.png') # C:\Users\murilo.eziliano_sant\Desktop\Projetos\PirateMaker-main\my_test\Platformer\img\sun.png
+sun_img = pygame.image.load('./img/sun.png') # C:\Users\murilo.eziliano_sant\Desktop\Projetos\PirateMaker-main\my_test\Platformer\img\sun.png
 bg_img = pygame.image.load('./img/sky.png')
 restart_img = pygame.image.load('./img/restart_btn.png')
 start_img = pygame.image.load('./img/start_btn.png')
@@ -242,9 +242,9 @@ class Player():
 		self.index = 0
 		self.counter = 0
 		for num in range(1, 5):
-			img_right = pygame.image.load(f'./img/guy{num}.png')
-			img_right = pygame.transform.scale(img_right, (40, 80))
-			img_left = pygame.transform.flip(img_right, True, False)
+			img_right = pygame.image.load(f'./img/panda{num}.png')#.convert_alpha()
+			img_right = pygame.transform.scale(img_right, (40, 80)).convert_alpha(img_right)
+			img_left = pygame.transform.flip(img_right, True, False).convert_alpha(img_right)
 			self.images_right.append(img_right)
 			self.images_left.append(img_left)
 		self.dead_image = pygame.image.load('./img/ghost.png')
@@ -313,8 +313,6 @@ class World():
 		for tile in self.tile_list:
 			screen.blit(tile[0], tile[1])
 
-
-
 class Enemy(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
@@ -331,7 +329,6 @@ class Enemy(pygame.sprite.Sprite):
 		if abs(self.move_counter) > 50:
 			self.move_direction *= -1
 			self.move_counter *= -1
-
 
 class Platform(pygame.sprite.Sprite):
 	def __init__(self, x, y, move_x, move_y):
@@ -355,10 +352,6 @@ class Platform(pygame.sprite.Sprite):
 			self.move_direction *= -1
 			self.move_counter *= -1
 
-
-
-
-
 class Lava(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
@@ -367,7 +360,6 @@ class Lava(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.x = x
 		self.rect.y = y
-
 
 class Coin(pygame.sprite.Sprite):
 	def __init__(self, x, y):
@@ -386,8 +378,6 @@ class Exit(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.x = x
 		self.rect.y = y
-
-
 
 player = Player(100, screen_height - 130)
 
