@@ -9,11 +9,11 @@ clock = pygame.time.Clock()
 fps = 60
 
 #game window
-tile_size = 50
+tile_size = 50 
 cols = 20
 margin = 100
-screen_width = tile_size * cols
-screen_height = (tile_size * cols) + margin
+screen_width =  1000#tile_size * cols
+screen_height = 1000#(tile_size * cols) + margin
 
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Level Editor')

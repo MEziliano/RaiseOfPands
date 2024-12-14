@@ -28,7 +28,7 @@ tile_size = 50
 game_over = 0
 main_menu = True
 level = 1
-max_levels = 7
+max_levels = 3
 score = 0
 
 
@@ -38,14 +38,15 @@ blue = (0, 0, 255)
 
 
 #load images
-sun_img = pygame.image.load('./img/sun.png') # C:\Users\murilo.eziliano_sant\Desktop\Projetos\PirateMaker-main\my_test\Platformer\img\sun.png
+sun_img = pygame.image.load('./img/sun.png') # 
 bg_img = pygame.image.load('./img/sky.png')
 restart_img = pygame.image.load('./img/restart_btn.png')
+logo_img = pygame.image.load('./img/logo.jpeg')
 start_img = pygame.image.load('./img/start_btn.png')
 exit_img = pygame.image.load('./img/exit_btn.png')
 
 #load sounds
-pygame.mixer.music.load('./img/music.wav')
+pygame.mixer.music.load('./img/cavendish-music-funny-song.mp3')
 pygame.mixer.music.play(-1, 0.0, 5000)
 coin_fx = pygame.mixer.Sound('./img/coin.wav')
 coin_fx.set_volume(0.5)
@@ -108,7 +109,6 @@ class Button():
 		screen.blit(self.image, self.rect)
 
 		return action
-
 
 class Player():
 	def __init__(self, x, y):
@@ -259,8 +259,6 @@ class Player():
 		self.direction = 0
 		self.in_air = True
 
-
-
 class World():
 	def __init__(self, data):
 		self.tile_list = []
@@ -402,17 +400,17 @@ world = World(world_data)
 restart_button = Button(screen_width // 2 - 50, screen_height // 2 + 100, restart_img)
 start_button = Button(screen_width // 2 - 350, screen_height // 2, start_img)
 exit_button = Button(screen_width // 2 + 150, screen_height // 2, exit_img)
-
+music_button = Button(tile_size//2, tile_size//2, exit_img)
 
 run = True
 while run:
-
 	clock.tick(fps)
 
 	screen.blit(bg_img, (0, 0))
 	screen.blit(sun_img, (100, 100))
 
 	if main_menu == True:
+
 		if exit_button.draw():
 			run = False
 		if start_button.draw():
@@ -456,7 +454,7 @@ while run:
 				world = reset_level(level)
 				game_over = 0
 			else:
-				draw_text('YOU WIN!', font, blue, (screen_width // 2) - 140, screen_height // 2)
+				draw_text('QUER SE  CASAR COMIGO?', font, blue, (screen_width // 2) - 360, screen_height // 2)
 				if restart_button.draw():
 					level = 1
 					#reset level
